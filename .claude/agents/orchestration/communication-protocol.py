@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Multi-Agent Communication Protocol Implementation
+Multi-Agent Communication Protocol Implementation with Color Support
 """
 
 import json
@@ -9,6 +9,49 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Any
 from enum import Enum
+
+# Color codes for different agent types
+class Colors:
+    # Programming languages
+    PYTHON = '\033[94m'      # Blue for Python
+    JAVASCRIPT = '\033[93m'   # Yellow for JavaScript/Next.js
+    TYPESCRIPT = '\033[96m'   # Cyan for TypeScript
+    
+    # Agent types
+    BUSINESS = '\033[95m'     # Magenta for Business/Product
+    QA = '\033[92m'          # Green for QA/Testing
+    FINANCE = '\033[33m'     # Orange/Dark Yellow for Finance
+    ORCHESTRATOR = '\033[91m' # Red for Orchestrators
+    
+    # Status colors
+    SUCCESS = '\033[92m'     # Green
+    ERROR = '\033[91m'       # Red
+    WARNING = '\033[93m'     # Yellow
+    INFO = '\033[94m'        # Blue
+    
+    # Formatting
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+    RESET = '\033[0m'
+
+# Agent color mapping
+AGENT_COLORS = {
+    'python-pro': Colors.PYTHON,
+    'nextjs-developer': Colors.JAVASCRIPT,
+    'qa-expert': Colors.QA,
+    'test-automator': Colors.QA,
+    'quant-analyst': Colors.FINANCE,
+    'fintech-engineer': Colors.FINANCE,
+    'futures-trading-strategist': Colors.FINANCE,
+    'product-manager': Colors.BUSINESS,
+    'prd-writer': Colors.BUSINESS,
+    'multi-agent-coordinator': Colors.ORCHESTRATOR,
+    'agent-organizer': Colors.ORCHESTRATOR,
+}
+
+def get_agent_color(agent_name: str) -> str:
+    """Get color code for an agent based on its type"""
+    return AGENT_COLORS.get(agent_name, Colors.RESET)
 
 class MessageType(Enum):
     REQUEST = "request"
@@ -64,7 +107,7 @@ class AgentOrchestrator:
         stage_id = stage['stage_id']
         execution = stage.get('execution', 'sequential')
         
-        print(f"[Orchestrator] Starting stage: {stage['name']}")
+        print(f"{Colors.ORCHESTRATOR}{Colors.BOLD}[Orchestrator]{Colors.RESET} Starting stage: {Colors.UNDERLINE}{stage['name']}{Colors.RESET}")
         
         if execution == 'parallel':
             results = await self._execute_parallel(stage['agents'])
@@ -114,7 +157,8 @@ class AgentOrchestrator:
     
     async def _run_agent(self, agent_name: str, scope: str, outputs: Any) -> Dict:
         """Simulate running an agent"""
-        print(f"  [Agent: {agent_name}] Starting with scope: {scope}")
+        color = get_agent_color(agent_name)
+        print(f"  {color}{Colors.BOLD}[Agent: {agent_name}]{Colors.RESET} Starting{f' with scope: {Colors.INFO}{scope}{Colors.RESET}' if scope else ''}")
         
         # Log the agent activation
         msg = AgentMessage(
@@ -128,7 +172,8 @@ class AgentOrchestrator:
         # Simulate agent work
         await asyncio.sleep(1)
         
-        print(f"  [Agent: {agent_name}] Completed")
+        color = get_agent_color(agent_name)
+        print(f"  {color}{Colors.BOLD}[Agent: {agent_name}]{Colors.RESET} {Colors.SUCCESS}✓ Completed{Colors.RESET}")
         
         return {
             "agent": agent_name,
@@ -138,13 +183,17 @@ class AgentOrchestrator:
     
     async def run_workflow(self):
         """Execute the entire workflow"""
-        print(f"Starting workflow: {self.config['name']}")
+        print(f"{Colors.ORCHESTRATOR}{Colors.BOLD}{'='*60}{Colors.RESET}")
+        print(f"{Colors.ORCHESTRATOR}{Colors.BOLD}Starting workflow:{Colors.RESET} {Colors.INFO}{self.config['name']}{Colors.RESET}")
+        print(f"{Colors.ORCHESTRATOR}{Colors.BOLD}{'='*60}{Colors.RESET}\n")
         
         for stage in self.config['stages']:
             result = await self.execute_stage(stage)
-            print(f"Stage {result['stage_id']} completed\n")
+            print(f"{Colors.SUCCESS}{Colors.BOLD}✓ Stage {result['stage_id']} completed{Colors.RESET}\n")
         
-        print("Workflow completed successfully!")
+        print(f"{Colors.ORCHESTRATOR}{Colors.BOLD}{'='*60}{Colors.RESET}")
+        print(f"{Colors.SUCCESS}{Colors.BOLD}✓ Workflow completed successfully!{Colors.RESET}")
+        print(f"{Colors.ORCHESTRATOR}{Colors.BOLD}{'='*60}{Colors.RESET}")
 
 # Main execution
 if __name__ == "__main__":

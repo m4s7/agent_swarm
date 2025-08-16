@@ -150,3 +150,111 @@
   },
   "correlation_id": "84ecb1d7-b566-4858-ae86-f16380e460ef"
 }
+{
+  "timestamp": "2025-08-16T08:54:42.148341",
+  "from": "orchestrator",
+  "to": "prd-writer",
+  "type": "request",
+  "payload": {
+    "scope": "",
+    "outputs": ""
+  },
+  "correlation_id": "b12c5fe4-1135-4706-8882-7a32cadf4b15"
+}
+{
+  "timestamp": "2025-08-16T08:54:43.151875",
+  "from": "orchestrator",
+  "to": "python-pro",
+  "type": "request",
+  "payload": {
+    "scope": "backend_architecture",
+    "outputs": "backend_design.md"
+  },
+  "correlation_id": "73e9ec02-d9c3-438a-8c78-55e3be92cd56"
+}
+{
+  "timestamp": "2025-08-16T08:54:43.152279",
+  "from": "orchestrator",
+  "to": "nextjs-developer",
+  "type": "request",
+  "payload": {
+    "scope": "frontend_architecture",
+    "outputs": "frontend_design.md"
+  },
+  "correlation_id": "b95e18b7-826c-4c32-aa6d-6724f08a1804"
+}
+{
+  "timestamp": "2025-08-16T08:54:43.152454",
+  "from": "orchestrator",
+  "to": "futures-trading-strategist",
+  "type": "request",
+  "payload": {
+    "scope": "trading_system_design",
+    "outputs": "trading_architecture.md"
+  },
+  "correlation_id": "4de8e43d-6478-4cd6-aa1e-95d9dd7babc6"
+}
+{
+  "timestamp": "2025-08-16T08:54:44.153947",
+  "from": "orchestrator",
+  "to": "python-pro",
+  "type": "request",
+  "payload": {
+    "scope": "",
+    "outputs": [
+      "backend_code/",
+      "api_docs.md"
+    ]
+  },
+  "correlation_id": "f45c4ae4-3887-4ef8-b5d5-578e96cc6406"
+}
+{
+  "timestamp": "2025-08-16T08:54:45.155626",
+  "from": "orchestrator",
+  "to": "futures-trading-strategist",
+  "type": "request",
+  "payload": {
+    "scope": "",
+    "outputs": [
+      "strategies/",
+      "backtest_results.json"
+    ]
+  },
+  "correlation_id": "180b8bf0-c12c-4bd0-adf4-8a28dfefd959"
+}
+{
+  "timestamp": "2025-08-16T08:54:46.157422",
+  "from": "orchestrator",
+  "to": "nextjs-developer",
+  "type": "request",
+  "payload": {
+    "scope": "",
+    "outputs": [
+      "frontend_code/",
+      "ui_components.md"
+    ]
+  },
+  "correlation_id": "d00d07a6-c261-4d40-bdc0-7a7e710f1589"
+}
+{
+  "timestamp": "2025-08-16T08:54:47.159266",
+  "from": "orchestrator",
+  "to": "qa-expert",
+  "type": "request",
+  "payload": {
+    "scope": "test_strategy",
+    "outputs": "test_plan.md"
+  },
+  "correlation_id": "196662b6-842d-4a8a-ad9f-cb1a78cd78b9"
+}
+{
+  "timestamp": "2025-08-16T08:54:47.159648",
+  "from": "orchestrator",
+  "to": "test-automator",
+  "type": "request",
+  "payload": {
+    "scope": "test_implementation",
+    "outputs": "test_results.json"
+  },
+  "correlation_id": "0c2492d4-b22f-4c45-8233-04b595db5ee5"
+}
