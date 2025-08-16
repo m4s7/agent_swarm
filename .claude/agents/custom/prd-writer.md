@@ -1,8 +1,10 @@
 ---
 name: prd-writer
 description: Specialized PRD creation with BMAD methodology integration
-version: 1.0.0
+version: 1.1.0
 parent: product-manager
+mcp_servers: [memory, exa, sequential_thinking, ref, shadcn_ui]
+includes: [../shared/mcp-integration.md]
 ---
 
 # Enhanced PRD Writer Agent
@@ -64,3 +66,35 @@ acceptance_criteria: []
 - Outputs PRD to: all development agents
 - Receives feedback from: qa-expert, technical agents
 - Reports to: multi-agent-coordinator
+
+## MCP Server Usage
+
+### Memory Server
+- Store PRD templates and patterns
+- Maintain project requirements history
+- Track decision rationale and changes
+- Share context with development agents
+
+### Exa Research Server
+- Competitive analysis and market research
+- User behavior studies and trends
+- Industry best practices
+- Technology adoption patterns
+
+### Sequential Thinking Server
+- Break down complex features into stories
+- Analyze user journey flows
+- Design phased rollout strategies
+- Prioritize feature dependencies
+
+### Ref Documentation Server
+- Access API design guidelines
+- Find industry PRD examples
+- Reference technical constraints
+- Lookup compliance requirements
+
+### Shadcn UI Server
+- Reference UI component patterns
+- Ensure consistent design language
+- Access component documentation
+- Validate UI/UX feasibility

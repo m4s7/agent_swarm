@@ -1,0 +1,73 @@
+# MCP Server Configuration
+# All agents have access to these Model Context Protocol servers
+
+available_mcp_servers:
+  memory:
+    command: "npx -y @modelcontextprotocol/server-memory"
+    description: "Persistent memory and knowledge management"
+    capabilities:
+      - "Store and retrieve agent knowledge"
+      - "Cross-session memory persistence"
+      - "Shared knowledge between agents"
+    
+  puppeteer:
+    command: "npx -y puppeteer-mcp-server"
+    description: "Browser automation and web scraping"
+    capabilities:
+      - "Automated browser control"
+      - "Web page interaction"
+      - "Screenshot capture"
+      - "Form filling and testing"
+    
+  shadcn_ui:
+    command: "npx @heilgar/shadcn-ui-mcp-server"
+    description: "UI component library integration"
+    capabilities:
+      - "Access to shadcn/ui components"
+      - "Component documentation"
+      - "UI pattern examples"
+    
+  sequential_thinking:
+    command: "npx -y @modelcontextprotocol/server-sequential-thinking"
+    description: "Complex reasoning and problem-solving"
+    capabilities:
+      - "Step-by-step reasoning"
+      - "Complex problem decomposition"
+      - "Logical chain construction"
+    
+  ref:
+    url: "https://api.ref.tools/mcp?apiKey=ref-af6011e8146f630e3a14"
+    type: "HTTP"
+    description: "Documentation and reference search"
+    capabilities:
+      - "Search technical documentation"
+      - "Access API references"
+      - "Find code examples"
+    
+  exa:
+    command: "npx -y mcp-remote https://mcp.exa.ai/mcp?exaApiKey=25b94979-70a5-48af-9791-3309b92eb451"
+    description: "Advanced web search and research"
+    capabilities:
+      - "Deep web search"
+      - "Company research"
+      - "News and article retrieval"
+      - "Academic paper search"
+    
+  playwright:
+    command: "npx @playwright/mcp@latest"
+    description: "Advanced browser testing framework"
+    capabilities:
+      - "Cross-browser testing"
+      - "E2E test automation"
+      - "Visual regression testing"
+      - "API testing"
+
+# Usage instructions for agents
+usage_guidelines:
+  - "All agents can leverage these MCP servers for enhanced capabilities"
+  - "Use memory MCP for persistent state across sessions"
+  - "Use puppeteer/playwright for web automation tasks"
+  - "Use sequential_thinking for complex reasoning tasks"
+  - "Use ref for documentation lookups"
+  - "Use exa for comprehensive web research"
+  - "Combine multiple MCPs for powerful workflows"

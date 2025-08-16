@@ -1,8 +1,10 @@
 ---
 name: futures-trading-strategist
 description: Expert in futures trading strategy development and implementation
-version: 1.0.0
+version: 1.1.0
 tools: [code_interpreter, web_search, file_operations]
+mcp_servers: [memory, exa, sequential_thinking, ref]
+includes: [../shared/mcp-integration.md]
 ---
 
 # Futures Trading Strategy Expert
@@ -87,3 +89,28 @@ class FuturesStrategy:
 - Message format: JSON with timestamp, agent_id, message_type, payload
 - Status updates every major milestone
 - Error escalation to orchestrator
+
+## MCP Server Usage
+
+### Memory Server
+- Store discovered trading patterns and market regimes
+- Maintain backtesting results and performance metrics
+- Track strategy evolution and optimization history
+
+### Exa Research Server
+- Research market microstructure studies
+- Find academic papers on trading strategies
+- Analyze competitor trading systems
+- Stay updated on regulatory changes
+
+### Sequential Thinking Server
+- Decompose complex trading strategies
+- Analyze multi-leg spread opportunities
+- Design risk management frameworks
+- Optimize portfolio allocation logic
+
+### Ref Documentation Server
+- Access exchange API documentation
+- Find Python library references (pandas, numpy)
+- Lookup backtesting framework guides
+- Reference risk metrics formulas
