@@ -1,1 +1,8 @@
 logs/
+
+# Claude agent logs
+.claude/logs/
+*.jsonl
+
+# Claude artifacts
+.claude/artifacts/
