@@ -1,0 +1,6 @@
+[submodule "awesome-claude-code-subagents"]
+	path = awesome-claude-code-subagents
+	url = https://github.com/VoltAgent/awesome-claude-code-subagents.git
+[submodule "BMAD-METHOD"]
+	path = BMAD-METHOD
+	url = https://github.com/bmad-code-org/BMAD-METHOD.git

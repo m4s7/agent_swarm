@@ -1,0 +1,92 @@
+{
+  "name": "specialized-dev-team-workflow",
+  "version": "1.0.0",
+  "orchestrator": "multi-agent-coordinator",
+  "stages": [
+    {
+      "stage_id": "requirements",
+      "name": "Requirements Gathering",
+      "agents": ["prd-writer"],
+      "inputs": ["user_requirements.md"],
+      "outputs": ["prd_document.md", "technical_specs.md"],
+      "timeout": 1800,
+      "validation": {
+        "required_sections": ["executive_summary", "user_stories", "technical_requirements"]
+      }
+    },
+    {
+      "stage_id": "architecture",
+      "name": "Architecture Design",
+      "execution": "parallel",
+      "agents": [
+        {
+          "agent": "python-pro",
+          "scope": "backend_architecture",
+          "output": "backend_design.md"
+        },
+        {
+          "agent": "nextjs-developer", 
+          "scope": "frontend_architecture",
+          "output": "frontend_design.md"
+        },
+        {
+          "agent": "futures-trading-strategist",
+          "scope": "trading_system_design",
+          "output": "trading_architecture.md"
+        }
+      ],
+      "timeout": 2400
+    },
+    {
+      "stage_id": "implementation",
+      "name": "Development Phase",
+      "execution": "sequential",
+      "substages": [
+        {
+          "name": "Backend Development",
+          "agent": "python-pro",
+          "dependencies": ["backend_design.md"],
+          "outputs": ["backend_code/", "api_docs.md"]
+        },
+        {
+          "name": "Trading Logic",
+          "agent": "futures-trading-strategist",
+          "dependencies": ["trading_architecture.md"],
+          "outputs": ["strategies/", "backtest_results.json"]
+        },
+        {
+          "name": "Frontend Development",
+          "agent": "nextjs-developer",
+          "dependencies": ["frontend_design.md", "api_docs.md"],
+          "outputs": ["frontend_code/", "ui_components.md"]
+        }
+      ]
+    },
+    {
+      "stage_id": "testing",
+      "name": "Quality Assurance",
+      "execution": "parallel",
+      "agents": [
+        {
+          "agent": "qa-expert",
+          "scope": "test_strategy",
+          "output": "test_plan.md"
+        },
+        {
+          "agent": "test-automator",
+          "scope": "test_implementation", 
+          "output": "test_results.json"
+        }
+      ],
+      "success_criteria": {
+        "coverage": 95,
+        "passing_tests": 100
+      }
+    }
+  ],
+  "error_handling": {
+    "retry_attempts": 3,
+    "fallback_agent": "agent-organizer",
+    "escalation_path": ["multi-agent-coordinator", "human"]
+  }
+}
