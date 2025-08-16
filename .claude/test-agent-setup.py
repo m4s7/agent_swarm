@@ -43,6 +43,7 @@ def get_agent_name_colored(agent_file: str) -> str:
 def verify_agent_files():
     """Check all required agent files are in place"""
     required_agents = [
+        # Original agents
         ".claude/agents/core/python-pro.md",
         ".claude/agents/core/nextjs-developer.md",
         ".claude/agents/core/qa-expert.md",
@@ -52,7 +53,27 @@ def verify_agent_files():
         ".claude/agents/core/product-manager.md",
         ".claude/agents/custom/futures-trading-strategist.md",
         ".claude/agents/custom/prd-writer.md",
-        ".claude/agents/orchestration/multi-agent-coordinator.md"
+        ".claude/agents/orchestration/multi-agent-coordinator.md",
+        # New agents (19 additions)
+        ".claude/agents/core/api-designer.md",
+        ".claude/agents/core/frontend-developer.md",
+        ".claude/agents/core/websocket-engineer.md",
+        ".claude/agents/core/typescript-pro.md",
+        ".claude/agents/core/deployment-engineer.md",
+        ".claude/agents/core/architect-reviewer.md",
+        ".claude/agents/core/code-reviewer.md",
+        ".claude/agents/core/debugger.md",
+        ".claude/agents/core/ai-engineer.md",
+        ".claude/agents/core/postgres-pro.md",
+        ".claude/agents/core/data-analyst.md",
+        ".claude/agents/core/data-engineer.md",
+        ".claude/agents/core/data-scientist.md",
+        ".claude/agents/core/refactoring-specialist.md",
+        ".claude/agents/core/tooling-engineer.md",
+        ".claude/agents/core/ux-researcher.md",
+        ".claude/agents/core/data-researcher.md",
+        ".claude/agents/core/research-analyst.md",
+        ".claude/agents/core/search-specialist.md"
     ]
     
     print(f"{Colors.CYAN}{Colors.BOLD}Verifying agent files...{Colors.RESET}")

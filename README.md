@@ -7,27 +7,57 @@
 - **Communication**: JSON-based message protocol with logging
 
 ## Team Composition
-1. **PRD Writer** - Enhanced with BMAD templates
-2. **Python Expert** - Backend and API development
-3. **Next.js Expert** - Frontend and UI development
-4. **Futures Trading Strategist** - Custom financial expert
-5. **QA Expert** - Test strategy and planning
-6. **Test Automator** - Automated test implementation
-7. **Multi-Agent Coordinator** - Team orchestration
+**Total: 30 Specialized Agents** across 10 categories
+- Core Development (5 agents)
+- Language Specialists (2 agents) 
+- Infrastructure (1 agent)
+- Quality & Security (5 agents)
+- Data & AI (5 agents)
+- Finance & Trading (3 agents)
+- Developer Experience (2 agents)
+- Business & Product (3 agents)
+- Research & Analysis (3 agents)
+- Orchestration (2 agents)
+
+See [AGENT_REGISTRY.md](AGENT_REGISTRY.md) for complete list
 
 ## Quick Start
 ```bash
 # Initialize submodules (first time setup)
 git submodule update --init --recursive
 
-# Verify setup
+# Verify setup (30 agents)
 ./start-agent-team.sh
 
-# Start with PRD creation
-claude --agent .claude/agents/custom/prd-writer.md
+# Choose a workflow for your project
+python .claude/scripts/select-workflow.py
 
-# Run full workflow
-python .claude/agents/orchestration/communication-protocol.py
+# Run with specific workflow
+python .claude/agents/orchestration/communication-protocol.py .claude/workflows/enhanced-team-orchestration.json
+
+# Or use an individual agent
+claude --agent .claude/agents/core/typescript-pro.md
+```
+
+## Available Workflows
+
+| Workflow | Agents | Stages | Best For |
+|----------|--------|--------|-----------|
+| **Original Team** | 10 | 4 | Simple projects, prototypes |
+| **Enhanced Team** | 30 | 9 | Enterprise projects |
+| **Data Science** | 7 | 5 | ML/AI projects |
+| **Full-Stack App** | 14 | 7 | Web applications |
+
+### Workflow Selection
+```bash
+# Interactive workflow selector
+python .claude/scripts/select-workflow.py
+
+# Compare all workflows
+python .claude/scripts/select-workflow.py --compare
+
+# View workflow details
+python .claude/scripts/select-workflow.py --details 2
 ```
 
 ## Submodule Management

@@ -1,0 +1,139 @@
+{
+  "name": "fullstack-app-workflow",
+  "version": "1.0.0",
+  "orchestrator": "multi-agent-coordinator",
+  "description": "Workflow for full-stack web application development",
+  "stages": [
+    {
+      "stage_id": "planning",
+      "name": "Product Planning",
+      "execution": "sequential",
+      "agents": [
+        {
+          "agent": "ux-researcher",
+          "scope": "user_research",
+          "outputs": ["user_personas.md", "user_journeys.md"]
+        },
+        {
+          "agent": "prd-writer",
+          "scope": "requirements",
+          "inputs": ["user_personas.md"],
+          "outputs": ["prd.md", "acceptance_criteria.md"]
+        }
+      ]
+    },
+    {
+      "stage_id": "architecture",
+      "name": "System Architecture",
+      "execution": "parallel",
+      "agents": [
+        {
+          "agent": "architect-reviewer",
+          "scope": "system_design",
+          "outputs": ["architecture.md", "tech_stack.md"]
+        },
+        {
+          "agent": "api-designer",
+          "scope": "api_design",
+          "outputs": ["openapi_spec.yaml", "api_docs.md"]
+        },
+        {
+          "agent": "postgres-pro",
+          "scope": "database_design",
+          "outputs": ["schema.sql", "migrations/"]
+        }
+      ]
+    },
+    {
+      "stage_id": "backend",
+      "name": "Backend Development",
+      "execution": "sequential",
+      "agents": [
+        {
+          "agent": "python-pro",
+          "scope": "api_implementation",
+          "inputs": ["openapi_spec.yaml", "schema.sql"],
+          "outputs": ["backend/", "tests/"]
+        },
+        {
+          "agent": "websocket-engineer",
+          "scope": "realtime_features",
+          "outputs": ["websocket_server/", "events_docs.md"]
+        }
+      ]
+    },
+    {
+      "stage_id": "frontend",
+      "name": "Frontend Development",
+      "execution": "parallel",
+      "agents": [
+        {
+          "agent": "typescript-pro",
+          "scope": "type_definitions",
+          "inputs": ["openapi_spec.yaml"],
+          "outputs": ["types/", "interfaces/"]
+        },
+        {
+          "agent": "frontend-developer",
+          "scope": "ui_implementation",
+          "outputs": ["frontend/", "components/"]
+        },
+        {
+          "agent": "nextjs-developer",
+          "scope": "nextjs_app",
+          "outputs": ["nextjs_app/", "pages/", "api_routes/"]
+        }
+      ]
+    },
+    {
+      "stage_id": "review",
+      "name": "Code Review",
+      "execution": "parallel",
+      "agents": [
+        {
+          "agent": "code-reviewer",
+          "scope": "code_quality",
+          "outputs": ["review_report.md", "issues.json"]
+        },
+        {
+          "agent": "refactoring-specialist",
+          "scope": "optimization",
+          "outputs": ["refactoring_suggestions.md"]
+        }
+      ]
+    },
+    {
+      "stage_id": "testing",
+      "name": "Testing",
+      "execution": "parallel",
+      "agents": [
+        {
+          "agent": "qa-expert",
+          "scope": "test_planning",
+          "outputs": ["test_plan.md", "test_cases.json"]
+        },
+        {
+          "agent": "test-automator",
+          "scope": "automation",
+          "outputs": ["e2e_tests/", "unit_tests/", "coverage_report.html"]
+        }
+      ]
+    },
+    {
+      "stage_id": "deployment",
+      "name": "Deployment",
+      "agents": [
+        {
+          "agent": "deployment-engineer",
+          "scope": "deployment",
+          "outputs": ["Dockerfile", "docker-compose.yml", ".github/workflows/"]
+        },
+        {
+          "agent": "tooling-engineer",
+          "scope": "dev_tools",
+          "outputs": ["scripts/", "Makefile", "dev_setup.md"]
+        }
+      ]
+    }
+  ]
+}

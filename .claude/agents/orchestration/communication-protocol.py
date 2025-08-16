@@ -197,5 +197,20 @@ class AgentOrchestrator:
 
 # Main execution
 if __name__ == "__main__":
-    orchestrator = AgentOrchestrator(".claude/workflows/team-orchestration.json")
+    import sys
+    
+    # Check for workflow file argument
+    if len(sys.argv) > 1:
+        workflow_file = sys.argv[1]
+    else:
+        # Check for active workflow symlink
+        active_workflow = Path(".claude/workflows/active-workflow.json")
+        if active_workflow.exists():
+            workflow_file = str(active_workflow)
+        else:
+            # Default to original workflow
+            workflow_file = ".claude/workflows/team-orchestration.json"
+    
+    print(f"{Colors.INFO}Using workflow: {workflow_file}{Colors.RESET}\n")
+    orchestrator = AgentOrchestrator(workflow_file)
     asyncio.run(orchestrator.run_workflow())

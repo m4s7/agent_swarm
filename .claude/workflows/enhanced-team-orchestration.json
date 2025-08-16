@@ -1,0 +1,283 @@
+{
+  "name": "enhanced-dev-team-workflow",
+  "version": "2.0.0",
+  "orchestrator": "multi-agent-coordinator",
+  "stages": [
+    {
+      "stage_id": "research",
+      "name": "Research & Analysis",
+      "execution": "parallel",
+      "agents": [
+        {
+          "agent": "ux-researcher",
+          "scope": "user_research",
+          "output": "user_research.md"
+        },
+        {
+          "agent": "research-analyst",
+          "scope": "competitive_analysis",
+          "output": "competitive_analysis.md"
+        },
+        {
+          "agent": "data-researcher",
+          "scope": "market_data",
+          "output": "market_research.md"
+        }
+      ],
+      "timeout": 1800
+    },
+    {
+      "stage_id": "requirements",
+      "name": "Requirements Gathering",
+      "agents": ["prd-writer"],
+      "inputs": ["user_requirements.md", "user_research.md", "competitive_analysis.md"],
+      "outputs": ["prd_document.md", "technical_specs.md"],
+      "timeout": 1800,
+      "validation": {
+        "required_sections": ["executive_summary", "user_stories", "technical_requirements"]
+      }
+    },
+    {
+      "stage_id": "architecture_review",
+      "name": "Architecture Review",
+      "execution": "parallel",
+      "agents": [
+        {
+          "agent": "architect-reviewer",
+          "scope": "system_architecture",
+          "output": "architecture_review.md"
+        },
+        {
+          "agent": "api-designer",
+          "scope": "api_design",
+          "output": "api_specification.md"
+        },
+        {
+          "agent": "postgres-pro",
+          "scope": "database_design",
+          "output": "database_schema.sql"
+        }
+      ],
+      "timeout": 2400
+    },
+    {
+      "stage_id": "architecture",
+      "name": "Detailed Architecture Design",
+      "execution": "parallel",
+      "agents": [
+        {
+          "agent": "python-pro",
+          "scope": "backend_architecture",
+          "output": "backend_design.md",
+          "dependencies": ["api_specification.md", "database_schema.sql"]
+        },
+        {
+          "agent": "typescript-pro",
+          "scope": "frontend_architecture",
+          "output": "frontend_architecture.md"
+        },
+        {
+          "agent": "websocket-engineer",
+          "scope": "realtime_architecture",
+          "output": "websocket_design.md"
+        },
+        {
+          "agent": "futures-trading-strategist",
+          "scope": "trading_system_design",
+          "output": "trading_architecture.md"
+        }
+      ],
+      "timeout": 2400
+    },
+    {
+      "stage_id": "data_pipeline",
+      "name": "Data Infrastructure",
+      "execution": "sequential",
+      "substages": [
+        {
+          "name": "Data Engineering",
+          "agent": "data-engineer",
+          "dependencies": ["database_schema.sql"],
+          "outputs": ["data_pipeline/", "etl_docs.md"]
+        },
+        {
+          "name": "AI/ML Pipeline",
+          "agent": "ai-engineer",
+          "dependencies": ["data_pipeline/"],
+          "outputs": ["ml_models/", "model_docs.md"]
+        },
+        {
+          "name": "Data Analysis",
+          "agent": "data-analyst",
+          "dependencies": ["data_pipeline/"],
+          "outputs": ["analytics/", "insights.md"]
+        }
+      ]
+    },
+    {
+      "stage_id": "implementation",
+      "name": "Development Phase",
+      "execution": "parallel",
+      "substages": [
+        {
+          "name": "Backend Development",
+          "agent": "python-pro",
+          "dependencies": ["backend_design.md", "api_specification.md"],
+          "outputs": ["backend_code/", "api_docs.md"]
+        },
+        {
+          "name": "Frontend Development",
+          "agent": "frontend-developer",
+          "dependencies": ["frontend_architecture.md"],
+          "outputs": ["frontend_base/"]
+        },
+        {
+          "name": "TypeScript Implementation",
+          "agent": "typescript-pro",
+          "dependencies": ["frontend_architecture.md"],
+          "outputs": ["typescript_code/"]
+        },
+        {
+          "name": "WebSocket Implementation",
+          "agent": "websocket-engineer",
+          "dependencies": ["websocket_design.md"],
+          "outputs": ["websocket_code/"]
+        },
+        {
+          "name": "Trading Logic",
+          "agent": "futures-trading-strategist",
+          "dependencies": ["trading_architecture.md"],
+          "outputs": ["strategies/", "backtest_results.json"]
+        }
+      ]
+    },
+    {
+      "stage_id": "code_review",
+      "name": "Code Review & Refactoring",
+      "execution": "sequential",
+      "agents": [
+        {
+          "agent": "code-reviewer",
+          "scope": "code_quality",
+          "output": "code_review_report.md"
+        },
+        {
+          "agent": "refactoring-specialist",
+          "scope": "code_optimization",
+          "output": "refactoring_report.md"
+        },
+        {
+          "agent": "debugger",
+          "scope": "bug_detection",
+          "output": "debug_report.md"
+        }
+      ],
+      "timeout": 3600
+    },
+    {
+      "stage_id": "testing",
+      "name": "Quality Assurance",
+      "execution": "parallel",
+      "agents": [
+        {
+          "agent": "qa-expert",
+          "scope": "test_strategy",
+          "output": "test_plan.md"
+        },
+        {
+          "agent": "test-automator",
+          "scope": "test_implementation",
+          "output": "test_results.json"
+        }
+      ],
+      "success_criteria": {
+        "coverage": 95,
+        "passing_tests": 100
+      }
+    },
+    {
+      "stage_id": "deployment",
+      "name": "Deployment & DevOps",
+      "agents": [
+        {
+          "agent": "deployment-engineer",
+          "scope": "deployment_automation",
+          "inputs": ["backend_code/", "frontend_code/"],
+          "outputs": ["deployment_config.yaml", "ci_cd_pipeline.yml"]
+        },
+        {
+          "agent": "tooling-engineer",
+          "scope": "developer_tools",
+          "outputs": ["dev_tools/", "tooling_docs.md"]
+        }
+      ],
+      "timeout": 2400
+    }
+  ],
+  "available_agents": {
+    "core_development": [
+      "api-designer",
+      "frontend-developer",
+      "websocket-engineer",
+      "python-pro",
+      "nextjs-developer"
+    ],
+    "language_specialists": [
+      "typescript-pro"
+    ],
+    "infrastructure": [
+      "deployment-engineer"
+    ],
+    "quality_security": [
+      "architect-reviewer",
+      "code-reviewer",
+      "debugger",
+      "qa-expert",
+      "test-automator"
+    ],
+    "data_ai": [
+      "ai-engineer",
+      "postgres-pro",
+      "data-analyst",
+      "data-engineer",
+      "data-scientist"
+    ],
+    "developer_experience": [
+      "refactoring-specialist",
+      "tooling-engineer"
+    ],
+    "business_product": [
+      "product-manager",
+      "prd-writer",
+      "ux-researcher"
+    ],
+    "research_analysis": [
+      "data-researcher",
+      "research-analyst",
+      "search-specialist"
+    ],
+    "finance_trading": [
+      "fintech-engineer",
+      "futures-trading-strategist",
+      "quant-analyst"
+    ],
+    "orchestration": [
+      "multi-agent-coordinator",
+      "agent-organizer"
+    ]
+  },
+  "agent_capabilities": {
+    "api-designer": ["openapi", "graphql", "rest", "grpc"],
+    "frontend-developer": ["html", "css", "javascript", "react"],
+    "typescript-pro": ["typescript", "type-safety", "generics"],
+    "postgres-pro": ["sql", "optimization", "indexing", "partitioning"],
+    "data-scientist": ["ml", "statistics", "python", "jupyter"],
+    "architect-reviewer": ["system-design", "patterns", "scalability"],
+    "deployment-engineer": ["docker", "kubernetes", "ci-cd", "terraform"]
+  },
+  "error_handling": {
+    "retry_attempts": 3,
+    "fallback_agent": "agent-organizer",
+    "escalation_path": ["multi-agent-coordinator", "architect-reviewer", "human"]
+  }
+}

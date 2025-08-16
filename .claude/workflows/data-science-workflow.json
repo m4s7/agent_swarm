@@ -1,0 +1,78 @@
+{
+  "name": "data-science-workflow",
+  "version": "1.0.0",
+  "orchestrator": "multi-agent-coordinator",
+  "description": "Workflow for data science and ML projects",
+  "stages": [
+    {
+      "stage_id": "data_research",
+      "name": "Data Research & Discovery",
+      "execution": "parallel",
+      "agents": [
+        {
+          "agent": "data-researcher",
+          "scope": "data_discovery",
+          "output": "data_sources.md"
+        },
+        {
+          "agent": "research-analyst",
+          "scope": "domain_research",
+          "output": "domain_knowledge.md"
+        }
+      ]
+    },
+    {
+      "stage_id": "data_engineering",
+      "name": "Data Pipeline Setup",
+      "agents": [
+        {
+          "agent": "data-engineer",
+          "scope": "etl_pipeline",
+          "inputs": ["data_sources.md"],
+          "outputs": ["data_pipeline/", "pipeline_docs.md"]
+        },
+        {
+          "agent": "postgres-pro",
+          "scope": "database_setup",
+          "outputs": ["database_schema.sql", "indexes.sql"]
+        }
+      ]
+    },
+    {
+      "stage_id": "data_analysis",
+      "name": "Exploratory Data Analysis",
+      "agent": "data-analyst",
+      "inputs": ["data_pipeline/"],
+      "outputs": ["eda_report.md", "visualizations/", "insights.json"]
+    },
+    {
+      "stage_id": "model_development",
+      "name": "ML Model Development",
+      "execution": "sequential",
+      "agents": [
+        {
+          "agent": "data-scientist",
+          "scope": "model_research",
+          "outputs": ["model_experiments/", "research_notes.md"]
+        },
+        {
+          "agent": "ai-engineer",
+          "scope": "model_implementation",
+          "outputs": ["ml_models/", "model_api/", "model_docs.md"]
+        }
+      ]
+    },
+    {
+      "stage_id": "deployment",
+      "name": "Model Deployment",
+      "agents": [
+        {
+          "agent": "deployment-engineer",
+          "scope": "ml_deployment",
+          "inputs": ["ml_models/", "model_api/"],
+          "outputs": ["deployment/", "monitoring_setup.yaml"]
+        }
+      ]
+    }
+  ]
+}
