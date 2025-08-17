@@ -1,0 +1,158 @@
+# Checkpoint Configuration for Claude Code Auto-Resume
+# This file defines when and how checkpoints are created
+
+# Auto-checkpoint settings
+auto_checkpoint:
+  # Time interval for automatic checkpoints (seconds)
+  interval: 300  # 5 minutes
+  
+  # Message count threshold for checkpoints
+  message_threshold: 20
+  
+  # Enable/disable automatic checkpointing
+  enabled: true
+
+# Checkpoint retention
+retention:
+  # Maximum checkpoints per session
+  max_per_session: 50
+  
+  # Days to keep checkpoints
+  retention_days: 7
+  
+  # Auto-cleanup expired checkpoints
+  auto_cleanup: true
+
+# Storage settings
+storage:
+  # Compression for checkpoint files
+  compression: true
+  
+  # Encryption for sensitive data (future feature)
+  encryption: false
+  
+  # Serialization format (json, pickle, msgpack)
+  format: "json"
+
+# Risk-based checkpointing
+risk_assessment:
+  # Create checkpoint before high-risk operations
+  checkpoint_before_risky_ops: true
+  
+  # Tools considered high-risk
+  high_risk_tools:
+    - "Bash"
+    - "Write" 
+    - "Edit"
+    - "MultiEdit"
+    - "git"
+    - "npm"
+    - "pip"
+    - "docker"
+    - "kubectl"
+    - "terraform"
+  
+  # Keywords that indicate high-risk operations
+  high_risk_keywords:
+    - "delete"
+    - "remove"
+    - "rm"
+    - "drop"
+    - "truncate"
+    - "install"
+    - "upgrade"
+    - "deploy"
+    - "production"
+    - "prod"
+    - "live"
+    - "master"
+    - "main"
+
+# Trigger conditions for automatic checkpoints
+triggers:
+  # Time-based triggers
+  time_interval:
+    enabled: true
+    interval: 300  # seconds
+  
+  # Message count triggers
+  message_count:
+    enabled: true
+    threshold: 20
+  
+  # Agent change triggers
+  agent_change:
+    enabled: true
+  
+  # Workflow stage triggers
+  workflow_stage:
+    enabled: true
+  
+  # Error threshold triggers
+  error_threshold:
+    enabled: true
+    max_errors: 3
+  
+  # Tool usage triggers
+  tool_usage:
+    enabled: true
+    risk_level: "medium"  # low, medium, high
+
+# Recovery preferences
+recovery:
+  # Preferred recovery strategy for different error types
+  strategies:
+    rate_limit: "wait_and_retry"
+    token_limit: "truncate_context"
+    network_timeout: "checkpoint_and_retry"
+    agent_failure: "agent_handoff"
+    authentication: "escalate_to_human"
+  
+  # Context truncation settings for token limit recovery
+  context_truncation:
+    # Keep most recent N messages
+    keep_recent_messages: 10
+    
+    # Preserve critical information
+    preserve_current_task: true
+    preserve_workflow_state: true
+    preserve_agent_decisions: true
+  
+  # Agent handoff preferences
+  agent_handoff:
+    # Prefer agents with different capabilities
+    prefer_different_skills: true
+    
+    # Transfer context between agents
+    transfer_context: true
+    
+    # Validate handoff success
+    validate_handoff: true
+
+# Monitoring and alerting
+monitoring:
+  # Log checkpoint operations
+  log_operations: true
+  
+  # Alert on checkpoint failures
+  alert_on_failure: true
+  
+  # Track checkpoint statistics
+  track_statistics: true
+  
+  # Performance monitoring
+  monitor_performance: true
+
+# Advanced features
+advanced:
+  # Incremental checkpointing for large sessions
+  incremental_checkpoints: false
+  
+  # Async checkpointing to avoid blocking
+  async_checkpoints: true
+  
+  # Checkpoint deduplication
+  deduplicate: true
+  
+  # Smart checkpoint timing (avoid interrupting important operations)
+  smart_timing: true
