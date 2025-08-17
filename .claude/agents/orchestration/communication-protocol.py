@@ -209,7 +209,7 @@ if __name__ == "__main__":
             workflow_file = str(active_workflow)
         else:
             # Default to original workflow
-            workflow_file = ".claude/workflows/team-orchestration.json"
+            workflow_file = ".claude/workflows/enhanced-team-orchestration.json"
     
     print(f"{Colors.INFO}Using workflow: {workflow_file}{Colors.RESET}\n")
     orchestrator = AgentOrchestrator(workflow_file)

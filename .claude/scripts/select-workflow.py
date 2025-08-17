@@ -21,7 +21,7 @@ class Colors:
 # Available workflows
 WORKFLOWS = {
     "1": {
-        "file": "team-orchestration.json",
+        "file": "enhanced-team-orchestration.json",
         "name": "Original Team Workflow",
         "description": "Basic workflow with core agents",
         "agents": 10,

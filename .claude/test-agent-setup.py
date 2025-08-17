@@ -91,7 +91,7 @@ def verify_agent_files():
 
 def verify_workflow_config():
     """Check workflow configuration"""
-    config_file = ".claude/workflows/team-orchestration.json"
+    config_file = ".claude/workflows/enhanced-team-orchestration.json"
     print(f"\n{Colors.CYAN}{Colors.BOLD}Verifying workflow configuration...{Colors.RESET}")
     
     if not Path(config_file).exists():
