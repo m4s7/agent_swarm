@@ -99,6 +99,12 @@ NEW_AGENT_MCP_MAPPING = {
     'search-specialist.md': {
         'servers': ['memory', 'exa', 'ref', 'sequential_thinking'],
         'focus': 'Search optimization and information retrieval'
+    },
+    
+    # Custom Agents
+    'futures-tick-data-specialist.md': {
+        'servers': ['memory', 'exa', 'sequential_thinking', 'ref'],
+        'focus': 'Level 1 & Level 2 tick data processing and microstructure analysis'
     }
 }
 
@@ -202,15 +208,23 @@ def main():
     print("=" * 60)
     
     core_dir = Path(".claude/agents/core")
+    custom_dir = Path(".claude/agents/custom")
     success_count = 0
     
     for agent_file, mcp_config in NEW_AGENT_MCP_MAPPING.items():
+        # Check core directory first
         file_path = core_dir / agent_file
         if file_path.exists():
             if add_mcp_to_agent(file_path, agent_file, mcp_config):
                 success_count += 1
         else:
-            print(f"  ⚠️  {agent_file} not found")
+            # Check custom directory
+            file_path = custom_dir / agent_file
+            if file_path.exists():
+                if add_mcp_to_agent(file_path, agent_file, mcp_config):
+                    success_count += 1
+            else:
+                print(f"  ⚠️  {agent_file} not found")
     
     print("\n" + "=" * 60)
     print(f"✅ Successfully updated {success_count} agents with MCP servers")

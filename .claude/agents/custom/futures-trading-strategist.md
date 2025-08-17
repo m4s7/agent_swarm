@@ -5,6 +5,10 @@ version: 1.1.0
 tools: [code_interpreter, web_search, file_operations]
 mcp_servers: [memory, exa, sequential_thinking, ref]
 includes: [../shared/mcp-integration.md]
+dependencies:
+  - futures-tick-data-specialist  # For tick data processing
+collaborates_with:
+  - futures-tick-data-specialist: "Receives processed tick signals"
 ---
 
 # Futures Trading Strategy Expert

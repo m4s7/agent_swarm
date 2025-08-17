@@ -229,7 +229,7 @@ EOF
 
 ### Task 3.1: Create Main Orchestration Configuration
 ```bash
-cat > .claude/workflows/enhanced-team-orchestration.json << 'EOF'
+cat > .claude/workflows/team-orchestration.json << 'EOF'
 {
   "name": "specialized-dev-team-workflow",
   "version": "1.0.0",
@@ -474,7 +474,7 @@ class AgentOrchestrator:
 
 # Main execution
 if __name__ == "__main__":
-    orchestrator = AgentOrchestrator(".claude/workflows/enhanced-team-orchestration.json")
+    orchestrator = AgentOrchestrator(".claude/workflows/team-orchestration.json")
     asyncio.run(orchestrator.run_workflow())
 EOF
 
@@ -523,7 +523,7 @@ def verify_agent_files():
 
 def verify_workflow_config():
     """Check workflow configuration"""
-    config_file = ".claude/workflows/enhanced-team-orchestration.json"
+    config_file = ".claude/workflows/team-orchestration.json"
     print(f"\nVerifying workflow configuration...")
     
     if not Path(config_file).exists():

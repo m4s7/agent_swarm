@@ -7,13 +7,13 @@
 - **Communication**: JSON-based message protocol with logging
 
 ## Team Composition
-**Total: 30 Specialized Agents** across 10 categories
+**Total: 31 Specialized Agents** across 10 categories
 - Core Development (5 agents)
 - Language Specialists (2 agents) 
 - Infrastructure (1 agent)
 - Quality & Security (5 agents)
 - Data & AI (5 agents)
-- Finance & Trading (3 agents)
+- Finance & Trading (4 agents)
 - Developer Experience (2 agents)
 - Business & Product (3 agents)
 - Research & Analysis (3 agents)

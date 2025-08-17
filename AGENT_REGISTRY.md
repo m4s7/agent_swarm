@@ -159,7 +159,7 @@ python3 .claude/scripts/test-mcp-integration.py
 | Research | research-analyst, data-researcher, search-specialist, ux-researcher |
 | DevOps | deployment-engineer, tooling-engineer |
 | Product Management | product-manager, prd-writer |
-| Finance | fintech-engineer, futures-trading-strategist, quant-analyst |
+| Finance | fintech-engineer, futures-trading-strategist, futures-tick-data-specialist, quant-analyst |
 
 ## 🎯 Recommended Agent Teams
 
@@ -170,7 +170,7 @@ python3 .claude/scripts/test-mcp-integration.py
 - `data-engineer` → `postgres-pro` → `data-analyst` → `data-scientist`
 
 ### Trading System
-- `futures-trading-strategist` → `quant-analyst` → `python-pro` → `fintech-engineer` → `test-automator`
+- `futures-trading-strategist` → `futures-tick-data-specialist` → `quant-analyst` → `python-pro` → `fintech-engineer` → `test-automator`
 
 ### Product Development
 - `prd-writer` → `ux-researcher` → `architect-reviewer` → Development Team → `qa-expert`

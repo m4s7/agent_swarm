@@ -33,6 +33,11 @@
           "agent": "futures-trading-strategist",
           "scope": "trading_system_design",
           "output": "trading_architecture.md"
+        },
+        {
+          "agent": "futures-tick-data-specialist",
+          "scope": "tick_data_infrastructure",
+          "output": "tick_processing_design.md"
         }
       ],
       "timeout": 2400

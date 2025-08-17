@@ -14,7 +14,7 @@
 - [x] Add Claude logs and artifacts to gitignore
 - [x] Integrate MCPs (Model Context Protocol servers)
   - [x] Configure MCP servers for agent communication
-  - [x] Add MCP tool integration to agents (all 30 agents)
+  - [x] Add MCP tool integration to agents (all 31 agents)
   - [x] Setup MCP for memory/knowledge persistence
   - [x] Enable cross-agent MCP resource sharing
   - [x] Add MCP-based web search capabilities (exa, ref)
@@ -34,18 +34,21 @@
   - [x] Add UX researcher
   - [x] Add Research & Analysis agents (data-researcher, research-analyst, search-specialist)
   - [x] Assign appropriate MCP servers to all new agents
-  - [x] Update verification scripts for 30 total agents
+  - [x] Update verification scripts for 31 total agents
   - [x] Create comprehensive agent registry (AGENT_REGISTRY.md)
   - [x] Implement automated integration scripts
+- [x] Add Futures TickData Level 1 & Level 2 Expert (futures-tick-data-specialist)
+  - [x] Create Level 1 tick data specialist (bid/ask/last/volume)
+  - [x] Create Level 2 market depth specialist (order book analysis)
+  - [x] Implement real-time data processing capabilities
+  - [x] Add market microstructure analysis
+  - [x] Create order flow imbalance detection
+  - [x] Implement tick-by-tick backtesting support
+  - [x] Integration with futures-trading-strategist
+  - [x] MCP server configuration (memory, exa, sequential_thinking, ref)
+  - [x] Update all workflows and verification scripts for 31 agents
 
 ## Pending 📋
-- [ ] Add Futures TickData Level 1 & Level 2 Expert
-  - [ ] Create Level 1 tick data specialist (bid/ask/last/volume)
-  - [ ] Create Level 2 market depth specialist (order book analysis)
-  - [ ] Implement real-time data processing capabilities
-  - [ ] Add market microstructure analysis
-  - [ ] Create order flow imbalance detection
-  - [ ] Implement tick-by-tick backtesting support
 - [ ] Auto resume after Limit reached
   - [ ] Detect rate limit or token limit errors
   - [ ] Implement automatic session state preservation

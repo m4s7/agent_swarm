@@ -52,6 +52,7 @@ def verify_agent_files():
         ".claude/agents/core/fintech-engineer.md",
         ".claude/agents/core/product-manager.md",
         ".claude/agents/custom/futures-trading-strategist.md",
+        ".claude/agents/custom/futures-tick-data-specialist.md",
         ".claude/agents/custom/prd-writer.md",
         ".claude/agents/orchestration/multi-agent-coordinator.md",
         # New agents (19 additions)
@@ -91,7 +92,7 @@ def verify_agent_files():
 
 def verify_workflow_config():
     """Check workflow configuration"""
-    config_file = ".claude/workflows/enhanced-team-orchestration.json"
+    config_file = ".claude/workflows/team-orchestration.json"
     print(f"\n{Colors.CYAN}{Colors.BOLD}Verifying workflow configuration...{Colors.RESET}")
     
     if not Path(config_file).exists():
