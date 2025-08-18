@@ -45,7 +45,7 @@ def verify_agent_files():
     """Check all required agent files are in place"""
     required_agents = [
         # Original agents
-        ".claude/agents/core/python-pro.md",
+        ".claude/agents/language-specialists/python-pro.md",
         ".claude/agents/core/nextjs-developer.md",
         ".claude/agents/core/qa-expert.md",
         ".claude/agents/core/test-automator.md",
@@ -60,7 +60,7 @@ def verify_agent_files():
         ".claude/agents/core/api-designer.md",
         ".claude/agents/core/frontend-developer.md",
         ".claude/agents/core/websocket-engineer.md",
-        ".claude/agents/core/typescript-pro.md",
+        ".claude/agents/language-specialists/typescript-pro.md",
         ".claude/agents/core/deployment-engineer.md",
         ".claude/agents/core/architect-reviewer.md",
         ".claude/agents/core/code-reviewer.md",

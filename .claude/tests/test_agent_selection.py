@@ -221,7 +221,7 @@ class TestAgentSelector(unittest.TestCase):
         self.assertIsNotNone(team)
         self.assertGreater(team.total_agents, 2)  # Complex task needs multiple agents
         self.assertIn(team.workflow_suggestion, 
-                     ['parallel-collaboration', 'enhanced-team-orchestration'])
+                     ['parallel-collaboration', 'team-orchestration'])
     
     def test_performance_update(self):
         """Test agent performance tracking"""
@@ -297,7 +297,7 @@ class TestWorkflowOptimizer(unittest.TestCase):
         features = self.selector.task_classifier.classify_task(task)
         workflow = self.optimizer.optimize_workflow(team, features)
         
-        self.assertEqual(workflow.workflow_type, 'enhanced-team-orchestration')
+        self.assertEqual(workflow.workflow_type, 'team-orchestration')
         self.assertGreater(len(workflow.stages), 3)  # Should have multiple stages
         
         # Check stage names

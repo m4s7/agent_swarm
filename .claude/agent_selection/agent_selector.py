@@ -436,7 +436,7 @@ class AgentSelector:
             estimated_time=self._estimate_time(features, total_agents) * 1.5,  # Slower with many agents
             confidence=min(0.9, scores[0].final_score) if scores else 0.0,
             reasoning=f"Full team with {total_agents} agents for comprehensive coverage",
-            workflow_suggestion="enhanced-team-orchestration"
+            workflow_suggestion="team-orchestration"
         )
     
     def _add_specialist(self,

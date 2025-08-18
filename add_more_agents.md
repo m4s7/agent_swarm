@@ -20,7 +20,7 @@ cp awesome-claude-code-subagents/categories/03-backend-systems/database-architec
 ```
 
 ### 3. Update Orchestration Config
-Add the new agent to `.claude/workflows/enhanced-team-orchestration.json`:
+Add the new agent to `.claude/workflows/team-orchestration.json`:
 ```json
 {
   "stage_id": "database_design",

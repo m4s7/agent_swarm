@@ -28,7 +28,7 @@ WORKFLOWS = {
         "best_for": "Simple projects, quick prototypes"
     },
     "2": {
-        "file": "enhanced-team-orchestration.json",
+        "file": "team-orchestration.json",
         "name": "Enhanced Team Workflow",
         "description": "Complete workflow with all 30 agents",
         "agents": 30,

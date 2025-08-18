@@ -22,7 +22,7 @@ mkdir -p .claude/agents/{core,custom,orchestration}
 ### Task 1.2: Extract Core Agents from VoltAgent Collection
 ```bash
 # Copy Python expert agent
-cp awesome-claude-code-subagents/categories/02-language-specialists/python-pro.md .claude/agents/core/python-pro.md
+cp awesome-claude-code-subagents/categories/02-language-specialists/python-pro.md .claude/agents/language-specialists/python-pro.md
 
 # Copy Next.js expert agent  
 cp awesome-claude-code-subagents/categories/01-frontend-development/nextjs-developer.md .claude/agents/core/nextjs-developer.md
@@ -498,7 +498,7 @@ from pathlib import Path
 def verify_agent_files():
     """Check all required agent files are in place"""
     required_agents = [
-        ".claude/agents/core/python-pro.md",
+        ".claude/agents/language-specialists/python-pro.md",
         ".claude/agents/core/nextjs-developer.md",
         ".claude/agents/core/qa-expert.md",
         ".claude/agents/core/test-automator.md",

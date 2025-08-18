@@ -102,7 +102,7 @@ class WorkflowOptimizer:
                 'parallel': True,
                 'description': 'Redundant parallel execution'
             },
-            'enhanced-team-orchestration': {
+            'team-orchestration': {
                 'stages': ['research', 'design', 'parallel-implement', 
                           'integrate', 'test', 'review', 'deploy'],
                 'parallel': 'mixed',
@@ -135,7 +135,7 @@ class WorkflowOptimizer:
             workflow = self._create_parallel_workflow(team, features)
         elif workflow_type == 'parallel-redundant':
             workflow = self._create_redundant_workflow(team, features)
-        elif workflow_type == 'enhanced-team-orchestration':
+        elif workflow_type == 'team-orchestration':
             workflow = self._create_enhanced_workflow(team, features)
         else:
             # Default to sequential
@@ -506,7 +506,7 @@ class WorkflowOptimizer:
         
         return OptimizedWorkflow(
             workflow_id=f"workflow_{hash(str(team))}"[:10],
-            workflow_type='enhanced-team-orchestration',
+            workflow_type='team-orchestration',
             stages=stages,
             total_agents=team.total_agents,
             estimated_time=team.estimated_time * (1 - parallelization_factor * 0.25),

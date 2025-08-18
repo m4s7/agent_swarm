@@ -103,7 +103,7 @@ python3 .claude/scripts/test-mcp-integration.py
 ### Start with Specific Agent
 ```bash
 # For development
-claude --agent .claude/agents/core/typescript-pro.md
+claude --agent .claude/agents/language-specialists/typescript-pro.md
 
 # For data analysis
 claude --agent .claude/agents/core/data-scientist.md

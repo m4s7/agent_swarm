@@ -33,10 +33,10 @@ git submodule update --init --recursive
 python .claude/scripts/select-workflow.py
 
 # Run with specific workflow
-python .claude/agents/orchestration/communication-protocol.py .claude/workflows/enhanced-team-orchestration.json
+python .claude/agents/orchestration/communication-protocol.py .claude/workflows/team-orchestration.json
 
 # Or use an individual agent
-claude --agent .claude/agents/core/typescript-pro.md
+claude --agent .claude/agents/language-specialists/typescript-pro.md
 ```
 
 ## Available Workflows

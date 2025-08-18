@@ -1,97 +1,357 @@
 {
-  "name": "specialized-dev-team-workflow",
-  "version": "1.0.0",
+  "name": "comprehensive-multi-agent-workflow",
+  "version": "2.0.0",
   "orchestrator": "multi-agent-coordinator",
+  "total_agents": 32,
+  "description": "Comprehensive workflow utilizing all 32 specialized agents for full-stack development",
   "stages": [
     {
-      "stage_id": "requirements",
-      "name": "Requirements Gathering",
-      "agents": ["prd-writer"],
-      "inputs": ["user_requirements.md"],
-      "outputs": ["prd_document.md", "technical_specs.md"],
-      "timeout": 1800,
-      "validation": {
-        "required_sections": ["executive_summary", "user_stories", "technical_requirements"]
-      }
-    },
-    {
-      "stage_id": "architecture",
-      "name": "Architecture Design",
+      "stage_id": "discovery",
+      "name": "Research & Discovery",
       "execution": "parallel",
       "agents": [
         {
-          "agent": "python-pro",
-          "scope": "backend_architecture",
-          "output": "backend_design.md"
+          "agent": "research-analyst",
+          "scope": "market_research",
+          "output": "market_analysis.md"
         },
         {
-          "agent": "nextjs-developer", 
-          "scope": "frontend_architecture",
-          "output": "frontend_design.md"
+          "agent": "data-researcher",
+          "scope": "data_requirements",
+          "output": "data_needs.md"
         },
         {
-          "agent": "futures-trading-strategist",
-          "scope": "trading_system_design",
-          "output": "trading_architecture.md"
+          "agent": "search-specialist",
+          "scope": "competitive_analysis",
+          "output": "competitor_review.md"
         },
         {
-          "agent": "futures-tick-data-specialist",
-          "scope": "tick_data_infrastructure",
-          "output": "tick_processing_design.md"
+          "agent": "ux-researcher",
+          "scope": "user_research",
+          "output": "user_personas.md"
         }
       ],
       "timeout": 2400
     },
     {
-      "stage_id": "implementation",
-      "name": "Development Phase",
+      "stage_id": "requirements",
+      "name": "Requirements & Planning",
       "execution": "sequential",
-      "substages": [
+      "agents": [
         {
-          "name": "Backend Development",
-          "agent": "python-pro",
-          "dependencies": ["backend_design.md"],
-          "outputs": ["backend_code/", "api_docs.md"]
+          "agent": "prd-writer",
+          "scope": "requirements_documentation",
+          "dependencies": ["market_analysis.md", "user_personas.md"],
+          "output": "prd_document.md"
         },
         {
-          "name": "Trading Logic",
-          "agent": "futures-trading-strategist",
-          "dependencies": ["trading_architecture.md"],
-          "outputs": ["strategies/", "backtest_results.json"]
-        },
-        {
-          "name": "Frontend Development",
-          "agent": "nextjs-developer",
-          "dependencies": ["frontend_design.md", "api_docs.md"],
-          "outputs": ["frontend_code/", "ui_components.md"]
+          "agent": "product-manager",
+          "scope": "roadmap_planning",
+          "dependencies": ["prd_document.md"],
+          "output": "product_roadmap.md"
         }
-      ]
+      ],
+      "timeout": 1800
     },
     {
-      "stage_id": "testing",
-      "name": "Quality Assurance",
+      "stage_id": "architecture",
+      "name": "System Architecture Design",
+      "execution": "parallel",
+      "agents": [
+        {
+          "agent": "architect-reviewer",
+          "scope": "system_architecture",
+          "output": "system_design.md"
+        },
+        {
+          "agent": "api-designer",
+          "scope": "api_specification",
+          "output": "api_specs.md"
+        },
+        {
+          "agent": "data-engineer",
+          "scope": "data_pipeline_design",
+          "output": "data_architecture.md"
+        },
+        {
+          "agent": "postgres-pro",
+          "scope": "database_design",
+          "output": "database_schema.md"
+        },
+        {
+          "agent": "websocket-engineer",
+          "scope": "realtime_communication",
+          "output": "websocket_design.md"
+        }
+      ],
+      "timeout": 3600
+    },
+    {
+      "stage_id": "backend_development",
+      "name": "Backend Implementation",
+      "execution": "parallel",
+      "agents": [
+        {
+          "agent": "python-pro",
+          "scope": "core_backend",
+          "dependencies": ["system_design.md", "api_specs.md"],
+          "output": "backend_core/"
+        },
+        {
+          "agent": "rust-engineer",
+          "scope": "performance_critical_modules",
+          "dependencies": ["system_design.md"],
+          "output": "rust_modules/"
+        },
+        {
+          "agent": "fintech-engineer",
+          "scope": "financial_services",
+          "dependencies": ["api_specs.md"],
+          "output": "fintech_services/"
+        },
+        {
+          "agent": "futures-trading-strategist",
+          "scope": "trading_logic",
+          "dependencies": ["system_design.md"],
+          "output": "trading_strategies/"
+        },
+        {
+          "agent": "futures-tick-data-specialist",
+          "scope": "tick_data_processing",
+          "dependencies": ["data_architecture.md"],
+          "output": "tick_processor/"
+        },
+        {
+          "agent": "quant-analyst",
+          "scope": "quantitative_models",
+          "dependencies": ["trading_strategies/"],
+          "output": "quant_models/"
+        }
+      ],
+      "timeout": 4800
+    },
+    {
+      "stage_id": "frontend_development",
+      "name": "Frontend Implementation",
+      "execution": "parallel",
+      "agents": [
+        {
+          "agent": "nextjs-developer",
+          "scope": "nextjs_application",
+          "dependencies": ["api_specs.md", "websocket_design.md"],
+          "output": "nextjs_app/"
+        },
+        {
+          "agent": "frontend-developer",
+          "scope": "ui_components",
+          "dependencies": ["user_personas.md"],
+          "output": "ui_library/"
+        },
+        {
+          "agent": "typescript-pro",
+          "scope": "type_definitions",
+          "dependencies": ["api_specs.md"],
+          "output": "types_package/"
+        }
+      ],
+      "timeout": 3600
+    },
+    {
+      "stage_id": "data_infrastructure",
+      "name": "Data & AI Infrastructure",
+      "execution": "parallel",
+      "agents": [
+        {
+          "agent": "data-scientist",
+          "scope": "ml_models",
+          "dependencies": ["data_needs.md", "quant_models/"],
+          "output": "ml_pipeline/"
+        },
+        {
+          "agent": "data-analyst",
+          "scope": "analytics_dashboard",
+          "dependencies": ["data_architecture.md"],
+          "output": "analytics/"
+        },
+        {
+          "agent": "ai-engineer",
+          "scope": "ai_services",
+          "dependencies": ["ml_pipeline/"],
+          "output": "ai_services/"
+        }
+      ],
+      "timeout": 3600
+    },
+    {
+      "stage_id": "infrastructure",
+      "name": "DevOps & Infrastructure",
+      "execution": "sequential",
+      "agents": [
+        {
+          "agent": "deployment-engineer",
+          "scope": "cicd_pipeline",
+          "dependencies": ["backend_core/", "nextjs_app/"],
+          "output": "deployment_config/"
+        },
+        {
+          "agent": "tooling-engineer",
+          "scope": "developer_tools",
+          "dependencies": ["deployment_config/"],
+          "output": "dev_tools/"
+        }
+      ],
+      "timeout": 2400
+    },
+    {
+      "stage_id": "quality_assurance",
+      "name": "Testing & Quality Control",
       "execution": "parallel",
       "agents": [
         {
           "agent": "qa-expert",
           "scope": "test_strategy",
+          "dependencies": ["system_design.md"],
           "output": "test_plan.md"
         },
         {
           "agent": "test-automator",
-          "scope": "test_implementation", 
-          "output": "test_results.json"
+          "scope": "automated_testing",
+          "dependencies": ["test_plan.md", "backend_core/", "nextjs_app/"],
+          "output": "test_suites/"
+        },
+        {
+          "agent": "debugger",
+          "scope": "issue_resolution",
+          "dependencies": ["test_suites/"],
+          "output": "debug_reports/"
         }
       ],
-      "success_criteria": {
-        "coverage": 95,
-        "passing_tests": 100
-      }
+      "timeout": 3600
+    },
+    {
+      "stage_id": "code_review",
+      "name": "Code Review & Optimization",
+      "execution": "sequential",
+      "agents": [
+        {
+          "agent": "code-reviewer",
+          "scope": "code_quality_review",
+          "dependencies": ["backend_core/", "nextjs_app/", "rust_modules/"],
+          "output": "code_review_report.md"
+        },
+        {
+          "agent": "refactoring-specialist",
+          "scope": "code_optimization",
+          "dependencies": ["code_review_report.md"],
+          "output": "refactored_code/"
+        }
+      ],
+      "timeout": 2400
+    },
+    {
+      "stage_id": "finalization",
+      "name": "Documentation & Orchestration",
+      "execution": "parallel",
+      "agents": [
+        {
+          "agent": "agent-organizer",
+          "scope": "workflow_optimization",
+          "dependencies": ["all_previous_stages"],
+          "output": "workflow_report.md"
+        },
+        {
+          "agent": "multi-agent-coordinator",
+          "scope": "coordination_summary",
+          "dependencies": ["all_previous_stages"],
+          "output": "coordination_report.md"
+        }
+      ],
+      "timeout": 1200
     }
   ],
+  "agent_registry": {
+    "core_development": [
+      "api-designer",
+      "frontend-developer", 
+      "nextjs-developer",
+      "websocket-engineer",
+      "python-pro"
+    ],
+    "language_specialists": [
+      "typescript-pro",
+      "python-pro",
+      "rust-engineer"
+    ],
+    "infrastructure": [
+      "deployment-engineer"
+    ],
+    "quality_security": [
+      "architect-reviewer",
+      "code-reviewer",
+      "debugger",
+      "qa-expert",
+      "test-automator"
+    ],
+    "data_ai": [
+      "ai-engineer",
+      "data-analyst",
+      "data-engineer",
+      "data-scientist",
+      "postgres-pro"
+    ],
+    "finance_trading": [
+      "fintech-engineer",
+      "futures-trading-strategist",
+      "futures-tick-data-specialist",
+      "quant-analyst"
+    ],
+    "developer_experience": [
+      "refactoring-specialist",
+      "tooling-engineer"
+    ],
+    "business_product": [
+      "product-manager",
+      "prd-writer",
+      "ux-researcher"
+    ],
+    "research_analysis": [
+      "data-researcher",
+      "research-analyst",
+      "search-specialist"
+    ],
+    "orchestration": [
+      "multi-agent-coordinator",
+      "agent-organizer"
+    ]
+  },
+  "collaboration_patterns": {
+    "backend_team": ["python-pro", "rust-engineer", "postgres-pro", "api-designer"],
+    "frontend_team": ["nextjs-developer", "frontend-developer", "typescript-pro"],
+    "data_team": ["data-engineer", "data-scientist", "data-analyst", "ai-engineer"],
+    "trading_team": ["futures-trading-strategist", "futures-tick-data-specialist", "quant-analyst", "fintech-engineer"],
+    "quality_team": ["qa-expert", "test-automator", "code-reviewer", "debugger"],
+    "research_team": ["research-analyst", "data-researcher", "search-specialist", "ux-researcher"]
+  },
   "error_handling": {
     "retry_attempts": 3,
     "fallback_agent": "agent-organizer",
-    "escalation_path": ["multi-agent-coordinator", "human"]
+    "escalation_path": ["multi-agent-coordinator", "debugger", "human"],
+    "recovery_strategies": {
+      "stage_failure": "retry_with_different_agent",
+      "agent_timeout": "escalate_to_coordinator",
+      "dependency_missing": "trigger_upstream_regeneration"
+    }
+  },
+  "performance_monitoring": {
+    "stage_timeouts": true,
+    "agent_utilization": true,
+    "parallel_efficiency": true,
+    "resource_consumption": true
+  },
+  "adaptive_execution": {
+    "dynamic_agent_selection": true,
+    "load_balancing": true,
+    "priority_adjustment": true,
+    "context_preservation": true
   }
 }
