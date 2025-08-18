@@ -523,6 +523,27 @@ class AgentCapabilityMatrix:
             can_research=True
         )
         
+        # Rust engineer
+        self.agents['rust-engineer'] = AgentCapability(
+            agent_id='rust-engineer',
+            agent_type='rust-engineer',
+            description='Expert Rust developer specializing in systems programming',
+            primary_categories=[TaskCategory.DEVELOPMENT],
+            secondary_categories=[TaskCategory.PERFORMANCE, TaskCategory.SECURITY],
+            languages=[ProgrammingLanguage.RUST],
+            frameworks=[],
+            max_complexity=TaskComplexity.VERY_COMPLEX,
+            preferred_complexity=TaskComplexity.COMPLEX,
+            can_test=True,
+            can_debug=True,
+            can_refactor=True,
+            can_document=True,
+            can_architect=True,
+            mcp_servers=['memory', 'ref', 'sequential_thinking'],
+            success_rate=0.98,  # Rust's compile-time guarantees lead to high success
+            works_well_with=['python-pro', 'debugger']
+        )
+        
         # Set up collaboration preferences
         self._setup_collaborations()
     

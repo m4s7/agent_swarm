@@ -1,6 +1,6 @@
 # Agent Registry - Multi-Agent Swarm
 
-## Total Agents: 30 (11 Original + 19 New)
+## Total Agents: 31 (11 Original + 19 New + 1 Rust Engineer)
 
 ## 📊 Agent Categories
 
@@ -13,11 +13,12 @@
 | `websocket-engineer` | Real-time communication, WebSocket protocols | memory, ref, sequential_thinking | ✅ Active |
 | `python-pro` | Python backend development | memory, ref, sequential_thinking, exa | ✅ Active |
 
-### 🔤 Language Specialists (2 agents)
+### 🔤 Language Specialists (3 agents)
 | Agent | Purpose | MCP Servers | Status |
 |-------|---------|-------------|--------|
 | `typescript-pro` | TypeScript development, type safety | memory, ref, sequential_thinking, exa | ✅ Active |
 | `python-pro` | Python expertise (also in Core Dev) | memory, ref, sequential_thinking, exa | ✅ Active |
+| `rust-engineer` | Rust systems programming, memory safety | memory, ref, sequential_thinking | ✅ Active |
 
 ### 🏗️ Infrastructure (1 agent)
 | Agent | Purpose | MCP Servers | Status |

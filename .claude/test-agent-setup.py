@@ -32,6 +32,7 @@ AGENT_TYPE_COLORS = {
     'futures-trading-strategist': Colors.ORANGE,
     'prd-writer': Colors.MAGENTA,
     'multi-agent-coordinator': Colors.RED,
+    'rust-engineer': Colors.ORANGE,  # Systems programming - orange
 }
 
 def get_agent_name_colored(agent_file: str) -> str:
@@ -74,7 +75,9 @@ def verify_agent_files():
         ".claude/agents/core/ux-researcher.md",
         ".claude/agents/core/data-researcher.md",
         ".claude/agents/core/research-analyst.md",
-        ".claude/agents/core/search-specialist.md"
+        ".claude/agents/core/search-specialist.md",
+        # Rust engineer
+        ".claude/agents/language-specialists/rust-engineer.md"
     ]
     
     print(f"{Colors.CYAN}{Colors.BOLD}Verifying agent files...{Colors.RESET}")
