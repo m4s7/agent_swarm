@@ -529,7 +529,7 @@ class AgentCapabilityMatrix:
             agent_type='rust-engineer',
             description='Expert Rust developer specializing in systems programming',
             primary_categories=[TaskCategory.DEVELOPMENT],
-            secondary_categories=[TaskCategory.PERFORMANCE, TaskCategory.SECURITY],
+            secondary_categories=[TaskCategory.PERFORMANCE, TaskCategory.SECURITY, TaskCategory.DEBUGGING, TaskCategory.REFACTORING],
             languages=[ProgrammingLanguage.RUST],
             frameworks=[],
             max_complexity=TaskComplexity.VERY_COMPLEX,
@@ -541,7 +541,7 @@ class AgentCapabilityMatrix:
             can_architect=True,
             mcp_servers=['memory', 'ref', 'sequential_thinking'],
             success_rate=0.98,  # Rust's compile-time guarantees lead to high success
-            works_well_with=['python-pro', 'debugger']
+            works_well_with=['python-pro', 'debugger', 'frontend-developer', 'typescript-pro']
         )
         
         # Set up collaboration preferences

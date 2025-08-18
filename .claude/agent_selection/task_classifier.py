@@ -236,6 +236,12 @@ class TaskClassifier:
                 '.go', 'golang', 'go mod', 'package main', 'func', 'goroutine',
                 'channel', 'defer', 'fmt.', 'gin', 'echo'
             ],
+            ProgrammingLanguage.RUST: [
+                '.rs', 'rust', 'cargo', 'rustc', 'fn ', 'let ', 'mut ', 'struct ',
+                'impl ', 'trait ', 'enum ', 'match ', 'Result<', 'Option<', 
+                'Vec<', 'String', 'Box<', 'Arc<', 'Mutex<', 'async fn', 'await',
+                'tokio', 'serde', 'clap', '&str', 'unsafe ', 'lifetime', 'borrow'
+            ],
             ProgrammingLanguage.SQL: [
                 '.sql', 'select', 'insert', 'update', 'delete', 'join',
                 'where', 'group by', 'order by', 'create table', 'alter'
@@ -253,6 +259,13 @@ class TaskClassifier:
             Framework.POSTGRES: ['postgres', 'postgresql', 'psql', 'pg_'],
             Framework.MONGODB: ['mongodb', 'mongoose', 'collection', 'document']
         }
+        
+        # Rust-specific patterns (can be expanded to full Framework enum later)
+        self.rust_frameworks = [
+            'tokio', 'async-std', 'serde', 'clap', 'rocket', 'axum', 'warp',
+            'diesel', 'sqlx', 'reqwest', 'hyper', 'tonic', 'wasm-bindgen',
+            'yew', 'bevy', 'actix-web', 'tauri', 'crossbeam', 'rayon'
+        ]
         
         # Complexity indicators
         self.complexity_indicators = {
@@ -431,6 +444,9 @@ class TaskClassifier:
                 elif ext in ['.ts', '.tsx']:
                     if ProgrammingLanguage.TYPESCRIPT not in languages:
                         languages.append(ProgrammingLanguage.TYPESCRIPT)
+                elif ext == '.rs':
+                    if ProgrammingLanguage.RUST not in languages:
+                        languages.append(ProgrammingLanguage.RUST)
         
         return languages
     

@@ -102,14 +102,20 @@ python3 .claude/scripts/test-mcp-integration.py
 
 ### Start with Specific Agent
 ```bash
-# For development
-claude --agent .claude/agents/language-specialists/typescript-pro.md
+# Use the Task tool in Claude Code to launch specific agents
+# In Claude Code, you can use:
 
-# For data analysis
-claude --agent .claude/agents/core/data-scientist.md
+# For development tasks
+# Use Task tool with subagent_type: "typescript-pro"
+
+# For data analysis  
+# Use Task tool with subagent_type: "data-scientist"
 
 # For architecture review
-claude --agent .claude/agents/core/architect-reviewer.md
+# Use Task tool with subagent_type: "architect-reviewer"
+
+# Or use the intelligent agent selection system:
+python3 .claude/demo_agent_selection.py
 ```
 
 ### Run Full Orchestration

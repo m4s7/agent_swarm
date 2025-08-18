@@ -175,6 +175,7 @@ def main():
             if set_active.lower() == 'y':
                 update_active_workflow(workflow_info['file'])
                 print(f"\n{Colors.GREEN}To run: python .claude/agents/orchestration/communication-protocol.py{Colors.RESET}")
+                print(f"{Colors.CYAN}Or use Claude Code Task tool with appropriate agent types{Colors.RESET}")
     else:
         print(f"{Colors.YELLOW}Invalid selection{Colors.RESET}")
 
